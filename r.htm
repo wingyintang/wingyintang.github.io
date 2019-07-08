@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Redirect...</title>
+	</head>
+	<body>
+		<script>
+			var queries = location.search.slice(1).split("&");
+			var querylist = [];
+			for (var i = 0; i < queries.length; i++){
+				var items = queries[i].split("=");
+				querylist[items[0]] = items[1];
+			}
+			if (querylist["url"]) {
+				if (querylist["protocol"]) {
+					window.location.href = querylist["protocol"] + "://" + querylist["url"].replace(/_/g,"/");
+				} else {
+					window.location.href = querylist["url"].replace(/_/g,"/");
+				}
+			}
+			if (querylist["d"]) {
+				window.location.href = "https://lldetail.ddns.net/" + querylist["d"].replace(/_/g,"/");
+			}
+			if (querylist["g"]) {
+				window.location.href = "https://lldetail.github.io/" + querylist["g"].replace(/_/g,"/");
+			}
+		</script>
+	</body>
+</html>
